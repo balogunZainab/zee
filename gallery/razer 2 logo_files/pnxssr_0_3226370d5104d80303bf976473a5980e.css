@@ -1,0 +1,29 @@
+#tab-4k .bo-temp .multi-panels ul {display: block; text-align: center; font-size: 0;}
+#tab-4k .bo-temp .multi-panels ul li {display: inline-block; width: 20%; vertical-align: top; padding-top: 1rem;}
+#tab-4k .bo-temp .multi-panels ul li h3{
+  color: #fff;
+  font-size: 3.5rem;
+  line-height: 5rem;
+  height: 70px;
+	display: block;
+  margin: 14px auto;
+}
+#tab-4k .bo-temp .multi-panels ul li .body-copy {
+  color: #fff;
+  font-size: 16px;
+	margin-top: 0; 
+}
+#tab-4k .multi-panels ul li img { max-height:90px; object-fit:contain; margin: 10px auto;}
+#tab-4k .multi-panels ul li:nth-child(1) img,
+#tab-4k .multi-panels ul li:nth-child(7) img{margin: 24px auto;}
+#tab-4k .multi-panels ul li:nth-child(6) img {margin: 30px auto;}
+@media (min-width:1025px) { 
+  #tab-4k .bo-temp .multi-panels ul li {width: 20%;}
+}
+@media (min-width:768px) and (max-width:1024px) { 
+  #tab-4k .bo-temp .multi-panels ul li {width: 33.333333%;}
+}
+@media (max-width:767px) { 
+  #tab-4k .bo-temp .multi-panels ul li {width: 50%;}
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}

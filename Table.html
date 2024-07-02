@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablee</title>
+    <link rel="shortcut icon" href="gallery/apple.png" type="image/x-icon">
+    <style>
+        table, th, td{
+            border-bottom : 2px solid #000;
+            border-collapse: collapse;
+            
+        }
+        table{
+            width: 600px;
+        }
+        td{
+            text-align: center;
+        }
+        th,td{
+            padding: 15px;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 180, 0.3);
+        } 
+        /* th:nth-child(odd), td:nth-child(even) {
+            background-color: aquamarine; */
+        /* } */
+        tr:hover {
+            background-color: #f00;
+        }
+
+    </style>
+</head> 
+<body>
+    <table>
+        <caption>Gender Table</caption>
+        <tr>
+            <th>S/N</th>
+            <th>NAME</th>
+            <th>GENDER</th>
+            <th>FAV COLOR</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Mahmoud Taiye</td>
+            <td>Male</td>
+            <td>Green</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Balogun Zainab</td>
+            <td>Female</td>
+            <td>White</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Olanipekun Damola</td>
+            <td>Male</td>
+            <td>Pink</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Sanusi Sanusi</td>
+            <td>Male</td>
+            <td>Black</td>
+        </tr>
+    </table>
+
+
+
+
+<br>
+
+
+
+    <table>
+        <colgroup span="2" style="background-color: azure;">
+        </colgroup>
+        <colgroup span="2" style="visibility: collapse;"></colgroup>
+        <tr>
+            <th>S/N</th>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <td>Mahmoud Taiye</td>
+            <td>Balogun Zainab</td>
+            <td>Olanipekun Damola</td>
+            <td>Sanusi Sanusi</td>
+        </tr>
+        <tr>
+            <th>GENDER</th>
+            <td>Male</td>
+            <td>Female</td>
+            <td>Male</td>
+            <td>Male</td>
+        </tr>
+        <tr>
+            <th>FAV COLOR</th>
+            <td>Green</td>
+            <td>White</td>
+            <td>Pink</td>
+            <td>Black</td>
+        </tr>
+    </table>
+
+       
+</body>
+</html>

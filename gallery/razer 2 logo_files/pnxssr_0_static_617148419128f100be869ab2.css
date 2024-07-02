@@ -1,0 +1,122 @@
+.yt-video iframe:not(.show) {
+display: none;
+}
+.ytclick picture {
+    pointer-events: none;
+}
+.yt-video .video-transcript {
+    padding: 0.5rem 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 14px;
+}
+.yt-video .video-transcript a, 
+.yt-video .video-transcript button {
+    color: #44d62c;
+    padding: 0 5px;
+    text-decoration: none !important;
+}
+.yt-video button {
+    display: flex;
+    justify-content: center;
+    background: none;
+    border-style: none;
+}
+.yt-video .video-transcript button:hover,
+.yt-video .video-transcript a:hover {
+    text-decoration: underline !important;
+}
+.yt-video .transcript-content {
+    width: 100%;
+    margin: 0 auto;
+    height: 0;
+    overflow: hidden;
+			opacity:1;
+    transition: all 0.3s ease-in-out;
+}
+.yt-video .expand .transcript-content {
+			opacity:0.9;
+}
+.yt-video .transcript-content .inner {
+    font-size: 14px;
+    color: #999;
+			margin-top:10px;
+    border-top: 1px solid #171717;
+    border-bottom: 1px solid #171717;
+}
+.yt-video .transcript-content .inner p{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px 0;
+}
+.yt-video .transcript-content .inner br {
+    display: block;
+    margin: 12px;
+    line-height: intial;
+    content: ' '
+}
+.yt-video .video-transcript .material-icons {
+    font-size: 18px;
+    color: #44d62c;
+    margin-left: -3px;
+    margin-top:0;
+}
+.yt-video .i-icon {
+    display:inline-block;
+    position: relative;
+    width: 18px;
+    height: 18px;
+			margin-top:1px;
+			margin-left:5px;
+}
+.yt-video .i-icon>i {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.yt-video .i-second {
+    transform: rotate(-90deg);
+    transition: all 0.3s ease-in-out;
+}
+.yt-video .expand .i-second {
+    transform: rotate(0)
+}
+.yt-video .close-transcript {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin: 20px auto 0;
+    text-align: center;
+    border-top: 1px solid #171717;
+    color: #999 !important;
+    width:100%;
+}
+.yt-video .close-transcript i {
+    color: #44d62c;
+    font-size: 18px;
+    padding: 0 5px;
+    margin-top:0;
+}
+.yt-video .close-transcript:hover {
+    text-decoration: none;
+}
+@media (max-width: 767px){
+		 .yt-video .video-transcript {
+        flex-direction: column;
+    }
+    .yt-video .video-transcript .slash { 
+        visibility:hidden;
+        height:5px;
+    }
+}
+html:not([lang^="en-"]) .yt-video .transcript-content,
+html:not([lang^="en-"]) .yt-video .video-transcript {
+    display: none;
+}
+.yt-video .transcript-wrapper:not(.expanded) .transcript-content {
+    display: none;
+}

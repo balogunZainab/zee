@@ -1,0 +1,12 @@
+#cooling-panels .carousel-vertical.image-type .button-icons button .lt1 { text-transform: uppercase; }
+#cooling-panels .lt3 ul { position:absolute; }
+#cooling-panels .lt3 ul { color:#9a9a9a; width:100%; margin:1rem 0; }
+#cooling-panels .lt3 ul li { display:inline-block; margin-right:10px}
+#cooling-panels .lt3 ul span{ display:inline-block; color:#44d62c }
+@media (max-width:767px) {
+#cooling-panels .lt3 ul { top:-25px;}
+}
+@media (min-width:768px) {
+#cooling-panels .lt3 ul {  top:50px; }
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}

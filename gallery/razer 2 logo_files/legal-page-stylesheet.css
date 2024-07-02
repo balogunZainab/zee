@@ -1,0 +1,220 @@
+.legal-page-style .container {
+  max-width: 1020px;
+  padding: 5rem 15px;
+}
+.legal-page-style .container .row {
+  margin: 0;
+}
+.legal-page-style h1,
+.legal-page-style h2 {
+  color: #44d62c;
+  font-size: 1.75rem;
+  font-weight: 200;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+}
+.legal-page-style .lmdf-date {
+  color: #888;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 8px;
+  display: block;
+  text-align: right;
+}
+.legal-page-style .body-copy {
+  font-weight: 400;
+  color: #888;
+  max-width: 100%;
+}
+.legal-page-style .row div.header {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+.legal-page-style .body-copy b {
+  color: #fff;
+  font-weight: 400;
+}
+.legal-page-style hr {
+  background-color: #3f3f3f;
+  margin-bottom: 45px;
+  margin-top: 45px;
+}
+.legal-page-style .body-copy ul,
+.legal-page-style .body-copy ul > li ul {
+  padding-left: 2rem;
+}
+.legal-page-style .body-copy ol {
+  padding-left: 0;
+}
+.legal-page-style .body-copy ol > li ol,
+.legal-page-style .folt-lower-alpha ol,
+.legal-page-style .folt-decimal ol,
+.legal-page-style .folt-lower-roman {
+  padding-left: 1.2rem;
+}
+.legal-page-style .body-copy ul li,
+.legal-page-style .body-copy ol li {
+  padding-bottom: 0.3rem;
+}
+.legal-page-style .body-copy > ul {
+  margin: 1rem auto;
+}
+.legal-page-style .body-copy strong {
+  font-weight: 700;
+}
+.legal-page-style table {
+  margin: 20px 0;
+  width: 100%;
+}
+.legal-page-style table th {
+  border: 0.0625rem solid #444;
+  font-weight: 700;
+  padding: 10px;
+}
+.legal-page-style table td {
+  border: 0.0625rem solid #444;
+  padding: 10px;
+}
+@media (min-width: 1024px) {
+  .legal-page-style .header {
+    width: 100%;
+  }
+  .legal-page-style .header-and-date h1,
+  .legal-page-style .header-and-date h2 {
+    width: 73%;
+    float: left;
+  }
+  .legal-page-style .header-and-date .lmdf-date {
+    width: 27%;
+    float: right;
+  }
+}
+@media (max-width: 1023px) {
+  .legal-page-style .header-and-date .lmdf-date {
+    float: left;
+    margin-top: 0;
+  }
+  .legal-page-style .header-and-date {
+    padding-bottom: 2rem !important;
+  }
+}
+/* default */
+.legal-page-style ol li {
+  list-style-type: none;
+}
+.legal-page-style li > ol li {
+  list-style-type: lower-alpha;
+}
+.legal-page-style li li > ol li {
+  list-style-type: lower-roman;
+}
+.legal-page-style ul li,
+.legal-page-style ol li > ul li {
+  list-style-type: disc;
+}
+.legal-page-style ul li > ul li {
+  list-style-type: circle;
+}
+.legal-page-style li li > ul li {
+  list-style-type: disc;
+}
+/* variations list style */
+.legal-page-style .fult-disc ul li {
+  list-style-type: disc;
+}
+.legal-page-style .fult-circle ul li {
+  list-style-type: circle;
+}
+.legal-page-style .folt-lower-alpha ol li {
+  list-style-type: lower-alpha;
+}
+.legal-page-style .folt-decimal ol li {
+  list-style-type: decimal;
+}
+.legal-page-style .folt-lower-roman ol li {
+  list-style-type: lower-roman;
+}
+.legal-page-style .folt-none ol li,
+.legal-page-style .fult-none ul li {
+  list-style-type: none;
+}
+.legal-page-style .sult-disc li > ul li {
+  list-style-type: disc;
+}
+.legal-page-style .sult-circle li > ul li {
+  list-style-type: circle;
+}
+.legal-page-style .solt-lower-alpha li > ol li {
+  list-style-type: lower-alpha;
+}
+.legal-page-style .solt-decimal li > ol li {
+  list-style-type: decimal;
+}
+.legal-page-style .solt-lower-roman li > ol li {
+  list-style-type: lower-roman;
+}
+.legal-page-style .solt-none li > ol li,
+.legal-page-style .sult-none li > ul li {
+  list-style-type: none;
+}
+.legal-page-style .tult-disc li li > ul li {
+  list-style-type: disc;
+}
+.legal-page-style .tult-circle li li > ul li {
+  list-style-type: circle;
+}
+.legal-page-style .tolt-lower-alpha li li > ol li {
+  list-style-type: lower-alpha;
+}
+.legal-page-style .tolt-decimal li li > ol li {
+  list-style-type: decimal;
+}
+.legal-page-style .tolt-lower-roman li li > ol li {
+  list-style-type: lower-roman;
+}
+.legal-page-style .tolt-none li li > ol li,
+.legal-page-style .tult-none li li > ul li {
+  list-style-type: none;
+}
+/* numeric-counter class style */
+.legal-page-style .numeric-counter ol {
+  counter-reset: item;
+}
+.legal-page-style .numeric-counter ol li {
+  display: block;
+  position: relative;
+}
+.legal-page-style .numeric-counter ol li:before {
+  content: counters(item, ".") ".";
+  counter-increment: item;
+  position: absolute;
+  margin-right: 100%;
+  right: 10px;
+  color: #fff;
+}
+.legal-page-style .numeric-counter ol li ol li:before {
+  color: #888;
+}
+.legal-page-style .numeric-counter ol {
+  padding-left: 1.5rem;
+}
+.legal-page-style .numeric-counter ol > li ol {
+  padding-left: 2.3rem;
+}
+.legal-page-style .numeric-counter ol li:nth-child(n + 10) ol {
+  padding-left: 2.8rem;
+}
+.legal-page-style .numeric-counter ol li ol > li ol {
+  padding-left: 3.1rem;
+}
+.legal-page-style .numeric-counter ol > li {
+  padding-top: 0.7rem;
+}
+.legal-page-style .numeric-counter ol > li ol > li > ol > li > ol {
+  counter-reset: counter3;
+  padding-left: 1.5rem;
+}
+.legal-page-style .numeric-counter ol > li ol > li > ol > li > ol > li::before {
+  counter-increment: counter3;
+  content: counter(counter3, lower-alpha) ".";
+}

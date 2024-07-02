@@ -1,0 +1,66 @@
+setVideo = function() {
+    document.querySelector(".ytclick") && document.querySelectorAll(".ytclick").forEach((elm)=>{
+        elm.addEventListener("click", function(e) {
+            e.preventDefault();
+								e.currentTarget.previousElementSibling.classList.add("show");
+								e.currentTarget.previousElementSibling.focus();
+            e.target.toggleAttribute("play");
+            e.target.classList.add("hide");
+            e.target.style.zIndex = "-1";
+            var forId = "#" + e.target.dataset.for;
+            if (e.target.hasAttribute("play")) {
+                playVideo(forId);
+            } else {
+                pauseVideo(forId);
+            }
+        });
+        elm.addEventListener("keyup", function(e) { if(e.key == ' '){e.currentTarget.click()}});
+    });
+    var counter = 0;
+    document.querySelector(".read-transcript") && document.querySelectorAll(".read-transcript").forEach((elm) => {
+        counter ++; 
+        elm.parentNode.nextElementSibling.setAttribute('id','transcript-content-'+counter) 
+        elm.setAttribute('aria-controls','transcript-content-'+counter)
+        closeTranscriptPanel(elm)
+    });
+    document.querySelector(".close-transcript") && document.querySelectorAll(".close-transcript").forEach((elm) => {
+        closeTranscriptPanel(elm)
+    });
+    function closeTranscriptPanel(elm) {
+        elm.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.target.closest('.transcript-wrapper').classList.toggle("expand");
+            let parent = e.target.closest('.transcript-wrapper')
+            if(parent.classList.contains('expand')){
+parent.classList.add('expanded');
+                parent.querySelector(".transcript-content").style.height = parent.querySelector(".transcript-content .inner").offsetHeight + "px";
+                parent.querySelector('.read-transcript').setAttribute('aria-label', "read video transcript");
+                parent.querySelector('.read-transcript').setAttribute('aria-expanded', true);
+            }else{
+                parent.querySelector(".transcript-content").style.height = null;
+                parent.querySelector('.read-transcript').setAttribute('aria-label', "read video transcript");
+                parent.querySelector('.read-transcript').setAttribute('aria-expanded', false);
+setTimeout(function(){parent.classList.remove('expanded')},500);
+            }
+        });
+    }
+    function playVideo(forId) {
+        var iframeContainer = document.querySelector('iframe' + forId) || document.querySelector(forId + ' iframe');
+        var data = {
+            event: 'command',
+            func: 'playVideo'
+        };
+        var message = JSON.stringify(data);
+        iframeContainer.contentWindow.postMessage(message, '*');
+    }
+    function pauseVideo(forId) {
+        var iframeContainer = document.querySelector('iframe' + forId) || document.querySelector(forId + ' iframe');
+        var data = {
+            event: 'command',
+            func: 'pauseVideo'
+        };
+        var message = JSON.stringify(data);
+        iframeContainer.contentWindow.postMessage(message, '*');
+    }
+}
+setVideo();

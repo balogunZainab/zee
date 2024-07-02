@@ -1,0 +1,6 @@
+#tab-speakers .body-copy span {color: #fff; font-weight: 400;}
+#tab-speakers .icons {padding-bottom: 3rem;}
+@media (max-width: 768px) {
+	#tab-speakers .icons {padding-bottom: 2rem;}
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}

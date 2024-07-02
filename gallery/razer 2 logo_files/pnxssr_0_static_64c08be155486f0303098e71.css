@@ -1,0 +1,4 @@
+@media screen and (max-width: 767px) {
+  .pond-panel .scroll-container .scroll-sticky .lock-container {min-height:auto!important;}
+}
+.pond-panel .scroll-container .scroll-sticky .lock-container .tadpoles { width:calc(100% - 20px)}

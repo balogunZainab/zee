@@ -1,0 +1,126 @@
+var thv2mt_buttons_div = document.getElementsByClassName("tabs-header-v2-buttons-mt");
+var thv2mt_buttons = [];
+var pnxSelectFieldToggle = function(evt){
+	evt.currentTarget.classList.toggle("is-open");
+};
+var pnxSelectFieldToggleKey = function(evt){
+	switch(evt.key) {
+        case ' ':
+		case 'Enter':
+				if(evt.key == 'Enter' && navigator.userAgent.toLowerCase().indexOf('firefox') != -1){
+					//Firefox does not open select when enter is pressed
+				}else{
+					evt.currentTarget.classList.add("is-open");
+				}
+			break;
+	}
+};
+var pnxSelectFieldToggleClear = function(evt){
+	evt.currentTarget.classList.remove("is-open");
+};
+var pnxSelectFieldToggleClearParent = function(evt){
+	evt.currentTarget.querySelector("select").classList.remove("is-open");
+};
+for (var idx = 0; idx < thv2mt_buttons_div.length; idx++) {
+    thv2mt_buttons[idx] = document.getElementsByClassName("tabs-header-v2-buttons-mt")[idx].getElementsByTagName("button");
+    if (document.getElementsByClassName("tabs-header-v2-buttons-mt")[idx].nextElementSibling != null) {
+        var thv2_dropdown = document.getElementsByClassName("tabs-header-v2-buttons-mt")[idx].nextElementSibling.getElementsByClassName("tabs-header-v2-dropdown-select")[0];
+        thv2_dropdown.addEventListener('click', pnxSelectFieldToggle);
+        thv2_dropdown.addEventListener('keydown', pnxSelectFieldToggleKey);
+        thv2_dropdown.addEventListener('blur', pnxSelectFieldToggleClear);
+        thv2_dropdown.closest("div").addEventListener('blur', pnxSelectFieldToggleClearParent);
+        for (var k = 0; k < thv2mt_buttons[idx].length; k++) {
+            thv2_dropdown.options[k].value = 'tabs-header-v2-mt-btn-' + idx + '-' + k;
+        }
+        thv2_dropdown.addEventListener('change', function() {
+            var relative_thv2_button = document.querySelector('button[id="'+this.value+'"]');
+            relative_thv2_button.click();
+        });
+    }
+}
+thv2mt_buttons.forEach(function (item,index) {
+    for (var i = 0; i < item.length; i++) {
+        item[i].id = 'tabs-header-v2-mt-btn-' + index + '-' + i;
+        var target_tab_ids = item[i].getAttribute("aria-controls");
+        var target_tab_id = target_tab_ids.split(/\s/);
+        for (var j = 0; j < target_tab_id.length; j++) {
+            if (document.getElementById(target_tab_id[j]) != null) {
+                document.getElementById(target_tab_id[j]).style.display = "none";
+                document.getElementById(target_tab_id[j]).setAttribute("role", "tabpanel");
+                document.getElementById(target_tab_id[j]).setAttribute("aria-labelledby", item[i].id);
+                if (item[i].classList.contains("active")) {
+                    document.getElementById(target_tab_id[j]).setAttribute("tabindex", 0);
+                    document.getElementById(target_tab_id[j]).style.display = "block";
+                }
+                else {
+                    document.getElementById(target_tab_id[j]).setAttribute("tabindex", -1);         
+                }
+            }
+        }
+        item[i].addEventListener('click',
+            function(e){
+                e.preventDefault();
+                var th2_active_btn = this.parentElement.getElementsByClassName("active")[0];
+                var th2_active_tab_ids = th2_active_btn.getAttribute("aria-controls");
+                var th2_active_tab_id = th2_active_tab_ids.split(/\s/);
+                th2_active_btn.classList.remove("active");
+                th2_active_btn.setAttribute("aria-selected", false);
+                th2_active_btn.setAttribute("tabindex", -1);
+                this.classList.add("active");
+                this.setAttribute("aria-selected", true);
+                this.setAttribute("tabindex", 0);
+                for (var j = 0; j < th2_active_tab_id.length; j++) {
+                    if (document.getElementById(th2_active_tab_id[j]) != null) {
+                        var th2_active_tab = document.getElementById(th2_active_tab_id[j]);
+                        th2_active_tab.setAttribute("tabindex", -1);
+                        th2_active_tab.style.display = "none";
+                    } 
+                }
+                if (this.parentElement.nextElementSibling != null) {
+                    this.parentElement.nextElementSibling.getElementsByClassName("tabs-header-v2-dropdown-select")[0].value = this.getAttribute("id");
+                }
+                var th2_new_active_tab_ids = this.getAttribute("aria-controls");
+                var th2_new_active_tab_id = th2_new_active_tab_ids.split(/\s/);
+                for (var j = 0; j < th2_new_active_tab_id.length; j++) {
+                    if (document.getElementById(th2_new_active_tab_id[j]) != null) {
+                        document.getElementById(th2_new_active_tab_id[j]).setAttribute("tabindex", 0);
+                        document.getElementById(th2_new_active_tab_id[j]).style.display = "block";
+                    }
+                }
+            }
+        );
+        item[i].addEventListener('keydown', thv2mt_handleTriggerKeypresses);
+    }
+});
+function thv2mt_handleTriggerKeypresses(e) {
+    switch(e.key) {
+        case 'ArrowRight':
+            e.preventDefault();
+            if(e.currentTarget.closest("button").nextElementSibling){
+                e.currentTarget.closest("button").nextElementSibling.focus();
+                e.currentTarget.closest("button").nextElementSibling.click();
+            }
+            break;  
+        case 'ArrowLeft':
+            e.preventDefault();
+            if(e.currentTarget.closest("button").previousElementSibling){
+                e.currentTarget.closest("button").previousElementSibling.focus();
+                e.currentTarget.closest("button").previousElementSibling.click();
+            }
+            break;  
+        case 'Home':
+            e.preventDefault();
+            if(e.currentTarget.closest(".tabs-header-v2-buttons-mt").firstElementChild){
+                e.currentTarget.closest(".tabs-header-v2-buttons-mt").firstElementChild.focus();
+                e.currentTarget.closest(".tabs-header-v2-buttons-mt").firstElementChild.click();
+            }   
+            break;  
+        case 'End':
+            e.preventDefault();
+            if(e.currentTarget.closest(".tabs-header-v2-buttons-mt").lastElementChild){
+                e.currentTarget.closest(".tabs-header-v2-buttons-mt").lastElementChild.focus();
+                e.currentTarget.closest(".tabs-header-v2-buttons-mt").lastElementChild.click();
+            }   
+            break;
+    }
+}

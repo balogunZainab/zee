@@ -1,0 +1,15 @@
+#processors .bo-temp .header {text-transform: none;}
+#processors .bo-temp .icons {padding-bottom: 2rem;}
+#processors .bo-temp .icons ul li {row-gap: 0;}
+#processors .bo-temp .icons .header {text-transform: none; color: #fff; font-family: Roboto; font-weight: normal; font-size: 2.5rem; line-height: 2.5rem;}
+#processors .bo-temp .icons .body-copy {color: #fff;}
+/* padding if no Performnce section: */
+#processors .bo-temp {
+    padding-top: 6.25rem;
+}
+@media (max-width: 768px) {
+#processors .bo-temp {
+    padding-top: 3rem;
+}
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}

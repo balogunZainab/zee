@@ -1,0 +1,12 @@
+#blade-accolades .carousel-cards-component .carousel-cards-glide {
+  padding-bottom: 70px; padding-top: 0;
+}
+#blade-accolades .carousel-cards-glide { overflow: hidden;}
+#blade-accolades .carousel-cards-component .content-blockquotes > img {
+}
+@media (max-width: 767px) {
+#blade-accolades {
+padding-bottom: 2rem;
+}
+}
+ @media screen and (max-width:767px){#pnxssr_554217777ad10a8cb29023b59c1f4bde div[pnxssr_3]{visibility:hidden;}} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){#pnxssr_554217777ad10a8cb29023b59c1f4bde div[pnxssr_3]{visibility:hidden;}} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){#pnxssr_554217777ad10a8cb29023b59c1f4bde div[pnxssr_3]{visibility:hidden;}} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){#pnxssr_554217777ad10a8cb29023b59c1f4bde div[pnxssr_3]{visibility:hidden;}}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .name {
+            background-color: #f00;
+            border: 2px solid #000;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .me{
+            background-color: aqua;
+        }
+        .second{
+            background-color: #fff;
+            color: #000;
+        }
+        #first{
+            background-color: #f00;
+        }
+    </style>
+    <script>
+        function sodiq() {
+            var x = document.getElementsByClassName ("second");
+            for (var i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+       
+        }
+
+        function change() {
+            document.getElementById("first").innerHTML = "Yo! I did it!!!"; 
+        }
+        
+    </script>
+</head>
+<body>
+    <button onclick="sodiq()">Hide class</button>
+
+    <div class="name me" >
+        <h2 class="second">Balogun Zainab</h2>
+        <p>she is a girl</p>
+        <p>she is a web developer</p>
+        <p>she is a muslim</p>
+    </div>
+    <div class="name">
+        <h2 class="second">Olanipekun Damola</h2>
+        <p>he is a boy</p>
+        <p>he is a web developer</p>
+        <p>he is fair in complexion</p>
+    </div>
+    <div class="name">
+        <h2 class="second">Oredola Muhammed</h2>
+        <p>he is a boy</p>
+        <p>he is a web developer</p>
+        <p>he is dark in complexion</p>
+    </div>
+
+    <h1 id="first">My first ID</h1>
+    <button onclick="change()">Click to see what's new</button>
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+var initVideo = function() {
+    var ctrlButtons = document.querySelectorAll("button.video-play-pause-btn:not(.init-video-fn)");
+
+    document.querySelectorAll("video.icons-video").forEach(e => {
+        let dataSpeed = parseFloat(e.getAttribute('data-speed')) || 1;
+        e.playbackRate = dataSpeed;
+    })
+
+    if (ctrlButtons.length !== 0) {
+        ctrlButtons.forEach(function(btn) {
+            btn.classList.add("init-video-fn");
+            var isLoop = !!btn?.parentNode?.parentNode?.querySelector('video.noloop');
+    
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                var pauseStatus = 'pause video animation';
+                var playPauseBtnSpan = '//assets2.razerzone.com/images/icon/pause.svg';
+
+                if (e.currentTarget.getAttribute('aria-label') === 'pause video animation') {
+                    pauseStatus = 'play video animation';
+                    playPauseBtnSpan = '//assets2.razerzone.com/images/icon/play.svg';
+                    e.currentTarget.parentNode.parentNode.querySelector("video").pause();
+                } else {
+                    e.currentTarget.parentNode.parentNode.querySelector("video").play();
+                }
+
+                e.currentTarget.setAttribute('aria-label', pauseStatus);
+                e.currentTarget.querySelector('img.play-pause').setAttribute('src', playPauseBtnSpan);
+            });
+
+
+            if (isLoop) {
+                var videoElement = btn.parentNode.parentNode.querySelector('video.noloop');
+
+                videoElement.addEventListener("ended", function(e) {
+                    //btn.click();
+                    e.currentTarget.pause();
+                    setTimeout(function(){
+                      if (btn.getAttribute('aria-label') === 'pause video animation') {
+                        pauseStatus = 'play video animation';
+                        playPauseBtnSpan = '//assets2.razerzone.com/images/icon/play.svg';
+                        btn.setAttribute('aria-label', pauseStatus);
+                        btn.querySelector('img.play-pause').setAttribute('src', playPauseBtnSpan);
+                    }},1);
+                    isLoop = false;
+                });
+            }
+            
+        });
+
+    }
+
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazyload"));
+
+    if ("IntersectionObserver" in window) {
+        lazyVideos.forEach(function(lazyVideo) {
+            var intersectionThreshold = 0; // Default threshold
+
+            if (lazyVideo.classList.contains("playdelay")) {
+                intersectionThreshold = 0.5;
+            }
+            var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(video) {
+                    if (video.isIntersecting) {
+                        for (var source in video.target.children) {
+                            var videoSource = video.target.children[source];
+                            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                                videoSource.src = videoSource.dataset.src;
+                            }
+                        }
+                        video.target.load();
+
+                        // Set the playbackRate here
+                        var dataSpeed = parseFloat(video.target.getAttribute('data-speed')) || 1;
+                        video.target.playbackRate = dataSpeed;
+
+                        lazyVideoObserver.unobserve(video.target);
+                    }
+                });
+            }, {
+                threshold: intersectionThreshold // Set the threshold dynamically
+            });
+
+            lazyVideoObserver.observe(lazyVideo);
+        });
+    }
+
+};
+
+if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(initVideo, 400);
+} else {
+    document.addEventListener('DOMContentLoaded', initVideo);
+}
+
+var common_video_functions_event = new CustomEvent(
+    "pnxCommonVideoFunctionReady", {
+        detail: {
+            success: true
+        },
+        bubbles: true,
+        cancelable: true
+    }
+);
+
+
+document.dispatchEvent(common_video_functions_event);

@@ -1,0 +1,13 @@
+#tab-ports-detail .icons ul {display: block; margin: 0 auto; max-width: 800px;}
+#tab-ports-detail .icons ul li {display: inline-block; width: 38%; text-align: left;vertical-align: top;}
+#tab-ports-detail .icons ul li:first-child {width: 60%;}
+#tab-ports-detail .icons ul li:last-child {display:block; width: 80%; text-align: center; padding-top: 3rem;}
+#tab-ports-detail .icons ul li .body-copy span {color: #44d62c;}
+@media (max-width: 768px) {
+	#tab-ports-detail .icons ul li,
+	#tab-ports-detail .icons ul li:first-child,
+	#tab-ports-detail .icons ul li:last-child {width: 100%; display: block;}
+	#tab-ports-detail .icons ul li:last-child {padding-top: 2rem;}
+	#tab-ports-detail .icons ul li .body-copy {margin-top: 0;}
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}

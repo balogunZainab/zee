@@ -1,0 +1,81 @@
+if (typeof pnx_domReady == "undefined") {
+    var pnx_domReady = function(elem, fn) {
+        var waitDOMInterval = null;
+        var waitDOMTimeout = null;
+        waitDOMInterval = setInterval((function() {
+            if (typeof elem == "string") {
+                let ok = false;
+                try {
+                    if (typeof window[elem] != "undefined") {
+                        ok = true
+                    } else if (document.querySelector(elem)) {
+                        ok = true
+                    }
+                } catch (err) {
+                    console.log("pnx_domReady", err)
+                }
+                if (ok) {
+                    if (typeof fn == "function") {
+                        clearInterval(waitDOMInterval);
+                        clearTimeout(waitDOMTimeout);
+                        fn()
+                    }
+                }
+            } else if (typeof elem == "object" && Array.isArray(elem)) {
+                let all_ok = elem.length;
+                let ok = false;
+                elem.forEach((function(elem_str) {
+                    try {
+                        if (typeof window[elem_str] != "undefined") {
+                            all_ok--
+                        } else if (document.querySelector(elem_str)) {
+                            all_ok--
+                        }
+                    } catch (err) {
+                        console.log("pnx_domReady (on server)", err)
+                    }
+                }
+                ));
+                if (all_ok == 0) {
+                    ok = true
+                }
+                if (ok) {
+                    if (typeof fn == "function") {
+                        clearInterval(waitDOMInterval);
+                        clearTimeout(waitDOMTimeout);
+                        fn()
+                    }
+                }
+            }
+        }
+        ), 50);
+        waitDOMTimeout = setTimeout((function() {
+            clearInterval(waitDOMInterval)
+        }
+        ), 3e4)
+    }
+}
+var doMyGsap = function () {
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll(".stxt-panel").forEach((elm) => {
+        const scroll_txt_tl = gsap.timeline({ 
+            defaults: { 
+                duration: 0.8
+            } 
+        })   
+        ScrollTrigger.create({
+            animation: scroll_txt_tl,
+            trigger: elm,
+            start: "top 80%",
+            end: "top 0%",
+            scrub:true,
+            toggleClass: "active",
+            toggleActions: "play play reverse reset"
+        });
+        scroll_txt_tl
+            .to(elm.querySelector(".stxt-content"), { opacity: 1})
+            .from(elm.querySelector(".stxt-panel .icon-img"), {opacity: 0.5, scale:0.5}, "-=0.6")
+            .to(elm.querySelector(".stxt-content"), {opacity:0.3}, "+=0.3")
+    });
+}
+pnx_domReady(["gsap","ScrollTrigger"],doMyGsap);

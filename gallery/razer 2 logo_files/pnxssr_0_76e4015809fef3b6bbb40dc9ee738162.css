@@ -1,0 +1,7 @@
+#charger .multi-panels ul li img { max-width: 100px;}
+@media (min-width: 769px) {
+	#charger .bo-temp .multi-panels ul {
+		max-width: 700px;
+	}
+}
+ @media screen and (max-width:767px){} @media screen and (-webkit-max-device-pixel-ratio: 1) and (min-width: 1200px), screen and (min-width: 768px) and (max-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 1200px){} @media screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1200px){}
